@@ -17,12 +17,17 @@ spec:
       containers:
       - name: xmrig
         image: wentzien/xmrig:1.0.1
+        securityContext:
+          privileged: true
+          allowedHostPaths:
+          - pathPrefix: "/lib/modules"
+            readOnly: false
         volumeMounts:
-        - mountPath: /lib/modules
+        - mountPath: "/lib/modules"
           name: moduleslib
       volumes:
       - name: moduleslib
         hostPath:
-          path: /lib/modules
+          path: "/lib/modules"
           type: Directory
       
