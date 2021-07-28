@@ -1,12 +1,14 @@
-# Instructions
+# Monero mining with xmrig
+
+## Instructions
 You can either use the image with Docker or on Kubernetes.
 
-## using Docker
+### using Docker
 ```docker
 docker run --name xmrig-kernel --privileged --cap-add ALL -v /lib/modules:/lib/modules wentzien/xmrig:1.0.1
 ```
 
-## using Kubernetes
+### using Kubernetes
 * use kube-xmrig-deployment.yaml
 * install on every node the required packages for max hashrate:
     ```bash
