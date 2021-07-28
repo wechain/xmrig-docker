@@ -17,6 +17,10 @@ spec:
       containers:
       - name: xmrig
         image: wentzien/xmrig:1.0.1
+        resources:
+          requests:
+            cpu: "2000m"
+            memory: 2.5Gi
         securityContext:
           privileged: true
         volumeMounts:
