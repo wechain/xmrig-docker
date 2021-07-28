@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: xmrig-deployment
+  labels:
+    app: xmrig
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: xmrig
+  template:
+    metadata:
+      labels:
+        app: xmrig
+    spec:
+      containers:
+      - name: xmrig
+        image: wentzien/xmrig:1.0.1
+        volumeMounts:
+        - mountPath: /lib/modules
+          name: moduleslib
+      volumes:
+      - name: moduleslib
+        hostPath:
+          path: /lib/modules
+          type: Directory
+      
