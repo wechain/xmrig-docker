@@ -5,7 +5,7 @@ metadata:
   labels:
     app: xmrig
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: xmrig
@@ -19,9 +19,6 @@ spec:
         image: wentzien/xmrig:1.0.1
         securityContext:
           privileged: true
-          allowedHostPaths:
-          - pathPrefix: "/lib/modules"
-            readOnly: false
         volumeMounts:
         - mountPath: "/lib/modules"
           name: moduleslib
@@ -29,5 +26,4 @@ spec:
       - name: moduleslib
         hostPath:
           path: "/lib/modules"
-          type: Directory
       
