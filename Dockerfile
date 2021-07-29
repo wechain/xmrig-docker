@@ -28,4 +28,13 @@ WORKDIR ../build
 RUN cmake .. -DXMRIG_DEPS=scripts/deps
 RUN make -j$(nproc)
 
-CMD sudo ./xmrig -o de.minexmr.com:443 -u 4AePnmc5NxmNWArsL3tLgF8hyMeqnzzNMLTY4tEc5DSdVKCEijp4m7sckeUFU5ACChgVhoFHHasi2DFDFGp1METwNPDMbDs -k --tls --rig-id "custom image"
+ARG arg_pool=de.minexmr.com:443
+ENV pool=${arg_pool}
+ARG arg_wallet_address=4AePnmc5NxmNWArsL3tLgF8hyMeqnzzNMLTY4tEc5DSdVKCEijp4m7sckeUFU5ACChgVhoFHHasi2DFDFGp1METwNPDMbDs
+ENV wallet_address=${arg_wallet_address}
+ARG arg_rig_id="my xmrig miner"
+ENV rig_id=${arg_rig_id}
+ARG arg_donate_level=1
+ENV donate_level=${arg_donate_level}
+
+CMD sudo ./xmrig --donate-level ${donate_level} -o ${pool} -u ${wallet_address} -k --tls --rig-id ${rig_id}
