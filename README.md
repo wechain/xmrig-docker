@@ -44,6 +44,7 @@ You can either use the image with Docker or on Kubernetes.
     ```bash
     sudo apt -y install kmod msr-tools
     ```
+* adjust env variable values in kube-xmrig-deployment.yaml
 * deploy in namespace "xmrig":
     ```bash
     kubectl apply -f kube-xmrig-deployment.yaml -n xmrig
