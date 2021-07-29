@@ -5,7 +5,7 @@ You can either use the image with Docker or on Kubernetes.
 
 ### using Docker
 ```docker
-docker run --name xmrig-kernel --privileged --cap-add ALL -v /lib/modules:/lib/modules wentzien/xmrig:1.0.1
+docker run --name xmrig --privileged --cap-add ALL -v /lib/modules:/lib/modules wentzien/xmrig:1.0.1
 ```
 
 ### using Kubernetes
