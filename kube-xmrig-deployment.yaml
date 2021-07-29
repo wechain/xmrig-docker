@@ -23,7 +23,7 @@ spec:
         - name: wallet_address
           value: 4AePnmc5NxmNWArsL3tLgF8hyMeqnzzNMLTY4tEc5DSdVKCEijp4m7sckeUFU5ACChgVhoFHHasi2DFDFGp1METwNPDMbDs
         - name: rig_id
-          value: "my xmrig miner"
+          value: "k8xmrigmining"
         - name: donate_level
           value: "1"
         resources:
