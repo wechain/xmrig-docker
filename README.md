@@ -4,9 +4,39 @@
 You can either use the image with Docker or on Kubernetes.
 
 ### using Docker
-```docker
-docker run --name xmrig --privileged --cap-add ALL -v /lib/modules:/lib/modules wentzien/xmrig:1.0.1
-```
+* install on the host the required packages for max hashrate:
+    ```bash
+    sudo apt -y install kmod msr-tools
+    ```
+* run container
+    with default settings:
+    ```docker
+    docker run --name xmrig --privileged --cap-add ALL -v /lib/modules:/lib/modules wentzien/xmrig:1.0.4
+    ```
+    with custom settings:
+    ```docker
+    docker run --name xmrig \
+        --env pool=<host-and-port-of-mining-pool> \
+        --env wallet_address=<your-wallet-address> \
+        --env rig_id=<custom-rig-id-name> \
+        --env donate_level=<donation-to-pool-in-percent> \
+        --privileged \
+        --cap-add ALL \
+        -v /lib/modules:/lib/modules \
+        wentzien/xmrig:1.0.4
+
+    #eg
+    sudo docker run --name xmrig \
+        --env pool=de.minexmr.com:443 \
+        --env wallet_address=4AePnmc5NxmNWArsL3tLgF8hyMeqnzzNMLTY4tEc5DSdVKCEijp4m7sckeUFU5ACChgVhoFHHasi2DFDFGp1METwNPDMbDs \
+        --env rig_id="mein mining rig" \
+        --env donate_level=1 \
+        --privileged \
+        --cap-add ALL \
+        -v /lib/modules:/lib/modules \
+        wentzien/xmrig:1.0.4
+    ```
+
 
 ### using Kubernetes
 * use kube-xmrig-deployment.yaml
