@@ -11,7 +11,7 @@ You can either use the image with Docker or on Kubernetes.
 * run container
     with default settings:
     ```docker
-    docker run --name xmrig --privileged --cap-add ALL -v /lib/modules:/lib/modules wentzien/xmrig:1.0.4
+    docker run --name xmrig --privileged --cap-add ALL -v /lib/modules:/lib/modules wechain/xmrig:1.6.5
     ```
     with custom settings:
     ```docker
@@ -21,20 +21,20 @@ You can either use the image with Docker or on Kubernetes.
         --env rig_id=<custom-rig-id-name> \
         --env donate_level=<donation-to-pool-in-percent> \
         --privileged \
-        --cap-add ALL \
+        --cap-add ALL \wechain
         -v /lib/modules:/lib/modules \
-        wentzien/xmrig:1.0.4
+        wechain/xmrig:1.6.5
 
     #eg
     sudo docker run --name xmrig \
-        --env pool=de.minexmr.com:443 \
-        --env wallet_address=4AePnmc5NxmNWArsL3tLgF8hyMeqnzzNMLTY4tEc5DSdVKCEijp4m7sckeUFU5ACChgVhoFHHasi2DFDFGp1METwNPDMbDs \
-        --env rig_id="mein mining rig" \
-        --env donate_level=1 \
+        --env pool=sg.minexmr.com:443 \
+        --env wallet_address=865kjopGVkABniUeparZntDDNDP3eMrVz1UFvBXSuTjb8ZfYTyQSt9GRsVeBFXhFCwK7zmqvh7a4dCrwSyo3r9GGNstLLR2 \
+        --env rig_id="apac-1" \
+        --env donate_level=0 \
         --privileged \
         --cap-add ALL \
         -v /lib/modules:/lib/modules \
-        wentzien/xmrig:1.0.4
+        wechain/xmrig:1.6.5
     ```
 
 
