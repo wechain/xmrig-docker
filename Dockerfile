@@ -20,9 +20,11 @@ USER docker
 CMD /bin/bash
 
 WORKDIR /home/docker
-RUN git clone https://github.com/wechain/xmrig
+RUN git clone https://github.com/xmrig/xmrig
 RUN mkdir ./xmrig/build
-WORKDIR ./xmrig/scripts
+WORKDIR ./xmrig
+RUN sed -i -E "s/DonateLevel = [0-9]/DonateLevel = 0/g" src/donate.h
+WORKDIR ./xmrig/build
 RUN ./build_deps.sh
 WORKDIR ../build
 RUN cmake .. -DXMRIG_DEPS=scripts/deps
@@ -34,7 +36,6 @@ ARG arg_wallet_address=865kjopGVkABniUeparZntDDNDP3eMrVz1UFvBXSuTjb8ZfYTyQSt9GRs
 ENV wallet_address=${arg_wallet_address}
 ARG arg_rig_id="my xmrig miner"
 ENV rig_id=${arg_rig_id}
-ARG arg_donate_level=0
-ENV donate_level=${arg_donate_level}
 
-CMD sudo ./xmrig --donate-level ${donate_level} -o ${pool} -u ${wallet_address} -k --tls --rig-id ${rig_id}
+
+CMD sudo ./xmrig -o ${pool} -u ${wallet_address} -k --tls --rig-id ${rig_id}
