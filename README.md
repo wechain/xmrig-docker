@@ -19,22 +19,20 @@ You can either use the image with Docker or on Kubernetes.
         --env pool=<host-and-port-of-mining-pool> \
         --env wallet_address=<your-wallet-address> \
         --env rig_id=<custom-rig-id-name> \
-        --env donate_level=<donation-to-pool-in-percent> \
         --privileged \
         --cap-add ALL \wechain
         -v /lib/modules:/lib/modules \
-        wechain/xmrig:1.6.5
+        wechain/xmrig
 
     #eg
     sudo docker run --name xmrig \
         --env pool=sg.minexmr.com:443 \
         --env wallet_address=865kjopGVkABniUeparZntDDNDP3eMrVz1UFvBXSuTjb8ZfYTyQSt9GRsVeBFXhFCwK7zmqvh7a4dCrwSyo3r9GGNstLLR2 \
         --env rig_id="apac-1" \
-        --env donate_level=0 \
         --privileged \
         --cap-add ALL \
         -v /lib/modules:/lib/modules \
-        wechain/xmrig:1.6.5
+        wechain/xmrig
     ```
 
 
