@@ -24,7 +24,7 @@ RUN git clone https://github.com/xmrig/xmrig
 RUN mkdir ./xmrig/build
 WORKDIR ./xmrig
 RUN sed -i -E "s/DonateLevel = [0-9]/DonateLevel = 0/g" src/donate.h
-WORKDIR ./xmrig/build
+WORKDIR ./xmrig/script
 RUN ./build_deps.sh
 WORKDIR ../build
 RUN cmake .. -DXMRIG_DEPS=scripts/deps
