@@ -21,11 +21,12 @@ CMD /bin/bash
 
 WORKDIR /home/docker
 RUN git clone https://github.com/xmrig/xmrig
-RUN mkdir ./xmrig/build
-WORKDIR ./xmrig
+RUN mkdir /home/docker/xmrig/build
+WORKDIR /home/docker/xmrig
 RUN sed -i -E "s/DonateLevel = [0-9]/DonateLevel = 0/g" src/donate.h
-RUN ./scripts/build_deps.sh
-WORKDIR ../build
+WORKDIR /home/docker/xmrig/scripts
+RUN ./build_deps.sh && ./enable_1gb_pages.sh && randomx_boost.sh
+WORKDIR /home/docker/xmrig/build
 RUN cmake .. -DXMRIG_DEPS=scripts/deps
 RUN make -j$(nproc)
 
@@ -35,6 +36,5 @@ ARG arg_wallet_address=865kjopGVkABniUeparZntDDNDP3eMrVz1UFvBXSuTjb8ZfYTyQSt9GRs
 ENV wallet_address=${arg_wallet_address}
 ARG arg_rig_id="my xmrig miner"
 ENV rig_id=${arg_rig_id}
-
 
 CMD sudo ./xmrig -o ${pool} -u ${wallet_address} -k --tls --rig-id ${rig_id}
